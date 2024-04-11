@@ -21,15 +21,15 @@ jobs:
         ssh-private-key: ${{ secrets.PC2UBUNTU }}
 
     - name: Sync logstash.conf
-      run: scp ./logstash.conf ubuntu@52.195.12.82:/home/ubuntu/elk/config/logstash.conf
+      run: scp -o StrictHostKeyChecking=no ./logstash.conf ubuntu@52.195.12.82:/home/ubuntu/elk/config/logstash.conf
 
     - name: Update logstash-cm.yaml
-      run: ssh ubuntu@52.195.12.82 "sed -i '/input {/,$c\$(cat /home/ubuntu/elk/config/logstash.conf)' /home/ubuntu/elk/config/logstash-cm.yaml"
+      run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "sed -i '/input {/,$c\$(cat /home/ubuntu/elk/config/logstash.conf)' /home/ubuntu/elk/config/logstash-cm.yaml"
 
     - name: Apply the new ConfigMap
-      run: ssh ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/config/logstash-cm.yaml"
+      run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/config/logstash-cm.yaml"
 
     - name: Apply the new Deployment
-      run: ssh ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/logstash-deployment.yaml"
+      run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/logstash-deployment.yaml"
 
 
