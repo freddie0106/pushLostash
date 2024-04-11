@@ -34,6 +34,6 @@ jobs:
       run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/config/logstash-cm.yaml"
 
     - name: Apply the new Deployment
-      run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/logstash-deployment.yaml"
+      run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "kubectl apply -f /home/ubuntu/elk/config/logstash-deployment.yaml"
 
 
