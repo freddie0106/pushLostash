@@ -18,4 +18,4 @@ jobs:
         ssh-private-key: ${{ secrets.PC2UBUNTU }}
 
     - name: Test SSH connection
-      run: ssh -o StrictHostKeyChecking=no user@52.195.12.82 "echo 'SSH connection successful!'"
+      run: ssh -o StrictHostKeyChecking=no ubuntu@52.195.12.82 "echo 'SSH connection successful!'"
