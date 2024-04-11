@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main  # 或者你用于测试的分支
-    paths-ignore:
-      - '**'  # 忽略所有路径，除非明确推送，可以修改为具体文件以限定测试触发条件
-
+   
 jobs:
   ssh-connection-test:
     runs-on: ubuntu-latest
